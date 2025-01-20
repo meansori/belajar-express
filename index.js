@@ -1,17 +1,28 @@
 const express = require("express");
 const app = express();
 const port = 3000;
+const bodyParse = require("body-parser");
+
+app.use(bodyParse.json());
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
+app.get("/hello", (req, res) => {
+  console.log(req.query);
 
-app.post("/", (req, res) => {
-  res.send("Got a POST request");
+  res.send("Hello World!");
 });
 
-app.put("/user", (req, res) => {
-  res.send("Got a PUT request at /user");
+app.post("/login", (req, res) => {
+  console.log(req.body);
+  res.send("Login berhasil");
+});
+
+app.put("/username", (req, res) => {
+  console.log(req.body);
+
+  res.send("update berhasil");
 });
 
 app.delete("/user", (req, res) => {
